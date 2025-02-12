@@ -5,7 +5,6 @@ from database.db import db_connection
 
 con = db_connection()
 cursor = con.cursor()
-
 user_route = Blueprint('user_routes',__name__)
 
 @user_route.route('/get-all',methods=['GET'])
