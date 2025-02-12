@@ -1,16 +1,8 @@
-from flask import Flask, jsonify
-from db import db_connection
-
+from flask import Flask
+from routes.user import user_route
 app = Flask(__name__)
 
-con = db_connection()
-cursor = con.cursor()
-
-@app.route('/api/user')
-def user():
-  cursor.execute('SELECT * FROM user WHERE ID = 1')
-  user =  cursor.fetchone()
-  return jsonify({"data":user,"success":True,})
+app.register_blueprint(user_route,url_prefix="/api/user")
 
 
 if __name__ == '__main__':
